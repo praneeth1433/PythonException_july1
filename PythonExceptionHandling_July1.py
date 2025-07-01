@@ -228,3 +228,112 @@ def connect_db(username,password,db_name):
 connect_db('praneeth','9999','demo')
 connect_db('praneeth','9911','demo')
 connect_db('praneeth','9999','dbms')
+
+
+'''
+ E-Commerce Cart Price Calculator
+
+Calculate total from cart list (item name, price, quantity).
+— Handle missing price or quantity with KeyError
+— Handle type errors (e.g., string instead of int)
+— Use try-except to process the cart smoothly
+'''
+
+def calculate_total_cart(cart):
+    total = 0
+
+    for item in cart:
+        try:
+            name = item['name']
+            price = item['price']
+            quantity = item['quantity']
+            total += price * quantity
+
+        except KeyError as e:
+            print('Error-Missing:',e)
+        except TypeError:
+            print("Invalid data type")
+
+    print("total:",total)
+
+cart=[
+    {'name':'tv','price':50000,'quantity':2},
+    {'name':'shirt','price':10000,'quantity':2},
+    {'name':'mobile','price':'11111','quantity':4},
+    {'name':'laptop','quantity':12},
+
+]
+
+calculate_total_cart(cart)
+
+
+'''
+10. Exception Logger Utility
+
+Create a utility function log_exception(e) that:
+— Accepts an exception object
+— Logs error type, message, and timestamp to a file
+— Can be reused in any except block
+'''
+
+'''
+1. Log Writer App
+
+Task: Create a program that logs user activities (like login, logout) to a file.
+
+Use append mode to add logs with timestamps.
+Ex: [2025–06–30 10:00:00] User logged in
+'''
+
+def log_activity(action):
+    from datetime import datetime
+    timestamp = datetime.now()
+    with open('user_log.txt','a') as f:
+        f.write(f"[{timestamp}] User {action}\n")
+
+log_activity('logged in')
+log_activity('logged out')
+
+'''
+2. Read and Display File Contents
+
+Task: Read a .txt file and display each line with line numbers.
+
+Handle file not found error.
+'''
+
+try:
+    file = open('user_log.txt','r')
+    lines = file.readlines()
+    for i in range(len(lines)):
+        print(f"{i+1}: {lines[i].strip()}")
+    file.close()
+
+except FileNotFoundError as e:
+    print("File not found")
+
+'''
+3. To-Do List Manager
+
+Task: Create a to-do list app that:
+
+Adds tasks to a file (write or append)
+Reads all tasks from the file
+Deletes all tasks (clear file content using 'w' mode)
+'''
+
+'''
+4. User Feedback Collector
+
+Task: Accept user input and store it in a file.
+
+Every time a new feedback is entered, it should be appended.
+'''
+
+feedback = input('Enter feedback: ')
+
+file = open('feedback.txt','a')
+file.write(feedback+'\n')
+file.close()
+
+print('feedback saved')
