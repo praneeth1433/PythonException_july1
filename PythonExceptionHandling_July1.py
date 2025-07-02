@@ -88,15 +88,6 @@ def safe_division(a, b):
 print(safe_division(2,3))
 print(safe_division(20,0))
 
-'''
-4.API Request Handler (Mock Project)
-
-Simulate an API call using a function.
-— Raise exception for invalid endpoint
-— Handle timeout with a custom TimeoutError
-— Use try-except-finally to manage connection lifecycle
-
-'''
 
 '''
 5. Dictionary Data Fetcher
@@ -268,15 +259,6 @@ calculate_total_cart(cart)
 
 
 '''
-10. Exception Logger Utility
-
-Create a utility function log_exception(e) that:
-— Accepts an exception object
-— Logs error type, message, and timestamp to a file
-— Can be reused in any except block
-'''
-
-'''
 1. Log Writer App
 
 Task: Create a program that logs user activities (like login, logout) to a file.
@@ -312,15 +294,7 @@ try:
 except FileNotFoundError as e:
     print("File not found")
 
-'''
-3. To-Do List Manager
 
-Task: Create a to-do list app that:
-
-Adds tasks to a file (write or append)
-Reads all tasks from the file
-Deletes all tasks (clear file content using 'w' mode)
-'''
 
 '''
 4. User Feedback Collector
